@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Grovia",
+    "slug": "grovia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#6B21E8"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.motiva.grovia"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6B21E8"
+      },
+      "package": "com.motiva.grovia"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "O Grovia precisa de acesso à câmera para registrar fotos dos trechos."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "O Grovia usa sua localização para vincular registros ao trecho correto da rodovia."
+        }
+      ],
+      "expo-font"
+    ]
+  }
+}

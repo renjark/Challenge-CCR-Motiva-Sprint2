@@ -1,0 +1,195 @@
+// ============================================================
+// mockData.js — Dados mockados do Grovia (Sprint 2)
+// ============================================================
+
+export const trechos = [
+  {
+    id: "t001",
+    km_inicio: 78,
+    km_fim: 79,
+    status: "critico",
+    urgencia: 98,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-10",
+    inspector: "Carlos M.",
+    anomalia: "Placa obstruída — vegetação cobrindo sinalização",
+    foto_url: null,
+    historico: [
+      { data: "2026-06-10", tipo: "inspecao", status: "critico", obs: "Placa km 78 totalmente obstruída" },
+      { data: "2026-05-20", tipo: "manutencao", status: "atencao", obs: "Poda realizada, vegetação voltou a crescer" },
+      { data: "2026-04-15", tipo: "inspecao", status: "ok", obs: "Trecho sem ocorrências" },
+    ],
+  },
+  {
+    id: "t002",
+    km_inicio: 45,
+    km_fim: 46,
+    status: "critico",
+    urgencia: 91,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-12",
+    inspector: "Ana R.",
+    anomalia: "Taxa de crescimento acima do esperado",
+    foto_url: null,
+    historico: [
+      { data: "2026-06-12", tipo: "inspecao", status: "critico", obs: "Crescimento acelerado detectado — 3x acima da média" },
+      { data: "2026-05-28", tipo: "inspecao", status: "atencao", obs: "Vegetação em crescimento" },
+    ],
+  },
+  {
+    id: "t003",
+    km_inicio: 112,
+    km_fim: 113,
+    status: "atencao",
+    urgencia: 64,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-08",
+    inspector: "Roberto S.",
+    anomalia: "Vegetação em nível médio, monitorar",
+    foto_url: null,
+    historico: [
+      { data: "2026-06-08", tipo: "inspecao", status: "atencao", obs: "Vegetação crescendo, ainda dentro do limite" },
+      { data: "2026-05-10", tipo: "manutencao", status: "ok", obs: "Poda preventiva realizada" },
+    ],
+  },
+  {
+    id: "t004",
+    km_inicio: 23,
+    km_fim: 24,
+    status: "atencao",
+    urgencia: 57,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-11",
+    inspector: "Carlos M.",
+    anomalia: "Vegetação lateral densa",
+    foto_url: null,
+    historico: [
+      { data: "2026-06-11", tipo: "inspecao", status: "atencao", obs: "Lateral esquerda com crescimento denso" },
+      { data: "2026-06-01", tipo: "inspecao", status: "ok", obs: "Normal" },
+    ],
+  },
+  {
+    id: "t005",
+    km_inicio: 90,
+    km_fim: 91,
+    status: "atencao",
+    urgencia: 48,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-09",
+    inspector: "Ana R.",
+    anomalia: "Crescimento moderado",
+    foto_url: null,
+    historico: [
+      { data: "2026-06-09", tipo: "inspecao", status: "atencao", obs: "Vegetação em nível médio" },
+    ],
+  },
+  {
+    id: "t006",
+    km_inicio: 10,
+    km_fim: 11,
+    status: "ok",
+    urgencia: 12,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-12",
+    inspector: "Roberto S.",
+    anomalia: null,
+    foto_url: null,
+    historico: [
+      { data: "2026-06-12", tipo: "inspecao", status: "ok", obs: "Trecho sem ocorrências" },
+      { data: "2026-05-15", tipo: "manutencao", status: "ok", obs: "Poda de rotina realizada" },
+    ],
+  },
+  {
+    id: "t007",
+    km_inicio: 33,
+    km_fim: 34,
+    status: "ok",
+    urgencia: 8,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-10",
+    inspector: "Ana R.",
+    anomalia: null,
+    foto_url: null,
+    historico: [
+      { data: "2026-06-10", tipo: "inspecao", status: "ok", obs: "Normal" },
+    ],
+  },
+  {
+    id: "t008",
+    km_inicio: 55,
+    km_fim: 56,
+    status: "ok",
+    urgencia: 5,
+    rodovia: "SP-280",
+    ultima_inspecao: "2026-06-11",
+    inspector: "Carlos M.",
+    anomalia: null,
+    foto_url: null,
+    historico: [
+      { data: "2026-06-11", tipo: "inspecao", status: "ok", obs: "Vegetação baixa, sem ocorrências" },
+    ],
+  },
+];
+
+export const notificacoes = [
+  {
+    id: "n001",
+    data: "2026-06-13",
+    hora: "09:32",
+    tipo: "critico",
+    titulo: "KM 78 - placa obstruída",
+    descricao: "Vegetação cobrindo sinalização",
+    trecho_id: "t001",
+    lida: false,
+  },
+  {
+    id: "n002",
+    data: "2026-06-13",
+    hora: "07:15",
+    tipo: "atencao",
+    titulo: "KM 45 - crescimento acelerado",
+    descricao: "Taxa acima do esperado",
+    trecho_id: "t002",
+    lida: false,
+  },
+  {
+    id: "n003",
+    data: "2026-06-12",
+    hora: "11:20",
+    tipo: "ok",
+    titulo: "KM 23 - manutenção concluída",
+    descricao: "Trecho atualizado para OK",
+    trecho_id: "t004",
+    lida: true,
+  },
+  {
+    id: "n004",
+    data: "2026-06-11",
+    hora: "14:00",
+    tipo: "atencao",
+    titulo: "KM 112 - crescimento moderado",
+    descricao: "Monitorar nas próximas 48h",
+    trecho_id: "t003",
+    lida: true,
+  },
+];
+
+export const dashboard = {
+  criticos: 7,
+  atencao: 12,
+  ok: 34,
+  manutencoes_pendentes: 19,
+  ultima_manutencao: "15/05/2026",
+};
+
+export const statusColors = {
+  critico: "#E53935",
+  atencao: "#FB8C00",
+  ok: "#43A047",
+};
+
+export const statusLabels = {
+  critico: "Crítico",
+  atencao: "Atenção",
+  ok: "OK",
+};
