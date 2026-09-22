@@ -2,44 +2,60 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { colors } from "../styles/theme";
+import { colors, radius } from "../styles/theme";
 import { useApp } from "../context/AppContext";
 
-export default function Header({ title, subtitle, showBack = false }) {
+/**
+ * Cabeçalho roxo padrão do app.
+ * Usado em TODAS as telas autenticadas para garantir consistência visual.
+ */
+export default function Header({
+  title,
+  subtitle,
+  showBack = false,
+  showBell = true,
+  right = null,
+}) {
   const navigation = useNavigation();
   const { notifNaoLidas } = useApp();
 
   return (
     <View style={styles.container}>
       <View style={styles.left}>
-        {showBack ? (
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-            <Ionicons name="chevron-back" size={24} color="#fff" />
-          </TouchableOpacity>
-        ) : (
-          <View>
-            {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
-            <Text style={styles.title}>{title}</Text>
-          </View>
-        )}
         {showBack && (
-          <View>
-            {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
-            <Text style={styles.title}>{title}</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backBtn}
+            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            accessibilityLabel="Voltar"
+          >
+            <Ionicons name="chevron-back" size={24} color={colors.white} />
+          </TouchableOpacity>
         )}
+        <View style={styles.titles}>
+          {subtitle ? <Text style={styles.subtitle} numberOfLines={1}>{subtitle}</Text> : null}
+          <Text style={styles.title} numberOfLines={1}>{title}</Text>
+        </View>
       </View>
-      <TouchableOpacity
-        style={styles.bellWrap}
-        onPress={() => navigation.navigate("Notificacoes")}
-      >
-        <Ionicons name="notifications-outline" size={22} color="#fff" />
-        {notifNaoLidas > 0 && (
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>{notifNaoLidas}</Text>
-          </View>
-        )}
-      </TouchableOpacity>
+
+      {right}
+
+      {showBell && (
+        <TouchableOpacity
+          style={styles.bellWrap}
+          onPress={() => navigation.navigate("Notificacoes")}
+          accessibilityLabel={`Notificações, ${notifNaoLidas} não lidas`}
+        >
+          <Ionicons name="notifications-outline" size={22} color={colors.white} />
+          {notifNaoLidas > 0 && (
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>
+                {notifNaoLidas > 9 ? "9+" : notifNaoLidas}
+              </Text>
+            </View>
+          )}
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -53,47 +69,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
+    gap: 12,
   },
-  left: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-    flex: 1,
-  },
-  subtitle: {
-    color: "rgba(255,255,255,0.75)",
-    fontSize: 13,
-    marginBottom: 2,
-  },
-  title: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "700",
-    flexShrink: 1,
-  },
-  backBtn: {
-    marginRight: 6,
-  },
+  left: { flexDirection: "row", alignItems: "center", gap: 6, flex: 1 },
+  titles: { flex: 1 },
+  subtitle: { color: "rgba(255,255,255,0.75)", fontSize: 13, marginBottom: 2 },
+  title: { color: colors.white, fontSize: 22, fontWeight: "700" },
+  backBtn: { marginRight: 2 },
   bellWrap: {
     position: "relative",
-    padding: 6,
+    padding: 8,
     backgroundColor: "rgba(255,255,255,0.18)",
-    borderRadius: 22,
+    borderRadius: radius.lg,
   },
   badge: {
     position: "absolute",
     top: -2,
     right: -2,
     backgroundColor: colors.critico,
-    borderRadius: 8,
-    minWidth: 16,
-    height: 16,
+    borderRadius: 9,
+    minWidth: 18,
+    height: 18,
+    paddingHorizontal: 4,
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 2,
+    borderColor: colors.primary,
   },
-  badgeText: {
-    color: "#fff",
-    fontSize: 10,
-    fontWeight: "700",
-  },
+  badgeText: { color: colors.white, fontSize: 9, fontWeight: "700" },
 });

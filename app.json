@@ -2,7 +2,7 @@
   "expo": {
     "name": "Grovia",
     "slug": "grovia",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "splash": {
@@ -14,26 +14,25 @@
       "bundleIdentifier": "com.motiva.grovia"
     },
     "android": {
+      "package": "com.motiva.grovia",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#6B21E8"
-      },
-      "package": "com.motiva.grovia"
+      }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "bundler": "metro"
     },
     "plugins": [
       [
         "expo-camera",
         {
-          "cameraPermission": "O Grovia precisa de acesso à câmera para registrar fotos dos trechos."
+          "cameraPermission": "O Grovia usa a câmera para registrar fotos dos trechos inspecionados."
         }
       ],
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "O Grovia usa sua localização para vincular registros ao trecho correto da rodovia."
+          "locationAlwaysAndWhenInUsePermission": "O Grovia usa sua localização para vincular a inspeção ao trecho correto da rodovia."
         }
       ],
       "expo-font"

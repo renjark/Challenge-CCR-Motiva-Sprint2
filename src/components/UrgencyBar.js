@@ -2,11 +2,13 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { colors } from "../styles/theme";
 
-export default function UrgencyBar({ value, status }) {
+/** Barra de urgência 0–100 colorida pelo status do trecho. */
+export default function UrgencyBar({ value = 0, status }) {
   const color = colors[status] || colors.gray;
+  const largura = Math.max(0, Math.min(100, Number(value) || 0));
   return (
     <View style={styles.track}>
-      <View style={[styles.fill, { width: `${value}%`, backgroundColor: color }]} />
+      <View style={[styles.fill, { width: `${largura}%`, backgroundColor: color }]} />
     </View>
   );
 }
@@ -14,13 +16,10 @@ export default function UrgencyBar({ value, status }) {
 const styles = StyleSheet.create({
   track: {
     height: 8,
-    backgroundColor: "#E0E0E0",
+    backgroundColor: colors.grayBorder,
     borderRadius: 4,
     flex: 1,
     overflow: "hidden",
   },
-  fill: {
-    height: "100%",
-    borderRadius: 4,
-  },
+  fill: { height: "100%", borderRadius: 4 },
 });
