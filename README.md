@@ -33,7 +33,7 @@ Pré-requisitos: Node.js 18+, aplicativo **Expo Go** no celular ou emulador Andr
 ```bash
 git clone https://github.com/renjark/Challenge-CCR-Motiva.git
 cd Challenge-CCR-Motiva
-
+npx expo install react-native-web react-dom @expo/metro-runtime
 npm install
 npx expo start
 ```
